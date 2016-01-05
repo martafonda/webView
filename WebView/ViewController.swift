@@ -22,7 +22,11 @@ class ViewController: UIViewController {
             
                 let urlContent = NSString(data: data!, encoding: NSUTF8StringEncoding)
                 print(urlContent)
-                self.webView.loadHTMLString(urlContent! as String, baseURL: nil)
+                
+                dispatch_async(dispatch_get_main_queue()){
+                    self.webView.loadHTMLString(urlContent! as String, baseURL: nil)
+                }
+                
             }
         }
         task.resume()
